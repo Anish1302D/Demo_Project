@@ -1,3 +1,325 @@
+<<<<<<< HEAD
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Teamboard Demo</title>
+  <style>
+    :root {
+      --bg: #f3f5f8;
+      --panel: rgba(255, 255, 255, 0.92);
+      --panel-strong: #eef2f7;
+      --text: #102840;
+      --muted: #5b6b83;
+      --accent: #2f7fa6;
+      --accent-strong: #4ea8d8;
+      --border: rgba(60, 95, 125, 0.15);
+      --shadow: 0 24px 80px rgba(20, 42, 73, 0.12);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(78, 145, 200, 0.14), transparent 35%),
+        radial-gradient(circle at top right, rgba(78, 145, 200, 0.08), transparent 30%),
+        linear-gradient(160deg, #f8fafc 0%, #eef3f8 45%, #dfe7f0 100%);
+    }
+
+    .shell {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 32px 20px 48px;
+    }
+
+    .hero {
+      display: grid;
+      gap: 18px;
+      grid-template-columns: 1.5fr 1fr;
+      align-items: stretch;
+      margin-bottom: 20px;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(16px);
+    }
+
+    .card.pad { padding: 24px; }
+
+    h1, h2, h3 { margin: 0; }
+
+    h1 {
+      font-size: clamp(2rem, 4vw, 3.8rem);
+      letter-spacing: -0.03em;
+      line-height: 1.02;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--accent);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      margin-bottom: 12px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 11px;
+      height: 11px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+      box-shadow: 0 0 18px rgba(76, 201, 240, 0.65);
+    }
+
+    .lead {
+      color: var(--muted);
+      font-size: 1.05rem;
+      line-height: 1.6;
+      max-width: 62ch;
+      margin-top: 16px;
+    }
+
+    .stats {
+      display: grid;
+      gap: 12px;
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .stat {
+      padding: 18px;
+      border-radius: 18px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+      border: 1px solid var(--border);
+    }
+
+    .stat .value {
+      font-size: 1.6rem;
+      font-weight: 800;
+      margin-bottom: 4px;
+    }
+
+    .stat .label {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .grid {
+      display: grid;
+      gap: 18px;
+      grid-template-columns: 1.2fr 0.8fr;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+      gap: 12px;
+    }
+
+    .pill {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(126, 224, 195, 0.12);
+      color: var(--accent);
+      border: 1px solid rgba(126, 224, 195, 0.18);
+      font-size: 0.85rem;
+      white-space: nowrap;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 12px;
+    }
+
+    li {
+      padding: 16px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.88);
+      border: 1px solid rgba(60, 95, 125, 0.12);
+    }
+
+    .task-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+
+    .task-title {
+      font-weight: 700;
+    }
+
+    .task-meta,
+    .muted {
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.5;
+    }
+
+    .composer {
+      display: grid;
+      gap: 12px;
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 120px;
+      resize: vertical;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background: var(--panel-strong);
+      color: var(--text);
+      padding: 14px 16px;
+      font: inherit;
+    }
+
+    button {
+      justify-self: start;
+      border: 0;
+      border-radius: 14px;
+      padding: 12px 18px;
+      font: inherit;
+      font-weight: 700;
+      color: #ffffff;
+      background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+      cursor: pointer;
+      transition: transform 160ms ease, box-shadow 160ms ease;
+      box-shadow: 0 12px 28px rgba(78, 145, 200, 0.18);
+    }
+
+    button:hover { transform: translateY(-1px); }
+
+    .output {
+      min-height: 108px;
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid rgba(60, 95, 125, 0.12);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    @media (max-width: 860px) {
+      .hero,
+      .grid,
+      .stats {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <article class="card pad">
+        <div class="eyebrow">Teamboard Demo</div>
+        <h1>Coordinate work without losing the thread.</h1>
+        <p class="lead">A compact demo dashboard for task status, team updates, and a mock AI assistant response. It is intentionally simple so the whole project is easy to run and modify.</p>
+      </article>
+      <aside class="card pad">
+        <div class="stats">
+          <div class="stat">
+            <div class="value">12</div>
+            <div class="label">Open tasks</div>
+          </div>
+          <div class="stat">
+            <div class="value">4</div>
+            <div class="label">Reviewing now</div>
+          </div>
+          <div class="stat">
+            <div class="value">98%</div>
+            <div class="label">On-time updates</div>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="grid">
+      <article class="card pad">
+        <div class="section-title">
+          <h2>Today’s focus</h2>
+          <span class="pill">Backend-served demo data</span>
+        </div>
+        <ul id="taskList"></ul>
+      </article>
+
+      <article class="card pad">
+        <div class="section-title">
+          <h2>Team update</h2>
+          <span class="pill">AI suggestion</span>
+        </div>
+        <div class="composer">
+          <textarea id="message" placeholder="Share a quick update for the team..."></textarea>
+          <button id="sendButton" type="button">Generate reply</button>
+          <div class="output" id="reply">Your response will appear here.</div>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <script>
+    const taskList = document.getElementById('taskList');
+    const message = document.getElementById('message');
+    const sendButton = document.getElementById('sendButton');
+    const reply = document.getElementById('reply');
+
+    async function loadTasks() {
+      const response = await fetch('/api/tasks');
+      const tasks = await response.json();
+      taskList.innerHTML = tasks.map((task) => `
+        <li>
+          <div class="task-top">
+            <div class="task-title">${task.title}</div>
+            <div class="pill">${task.status}</div>
+          </div>
+          <div class="task-meta">${task.owner} · Due ${task.due}</div>
+          <div class="muted">${task.details}</div>
+        </li>
+      `).join('');
+    }
+
+    async function generateReply() {
+      const content = message.value.trim();
+      if (!content) {
+        reply.textContent = 'Write a short update first.';
+        return;
+      }
+
+      reply.textContent = 'Thinking...';
+
+      const response = await fetch('/api/assistant', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: content })
+      });
+
+      const data = await response.json();
+      reply.textContent = data.reply;
+    }
+
+    sendButton.addEventListener('click', generateReply);
+    loadTasks();
+  </script>
+</body>
+</html>
+=======
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -318,3 +640,4 @@
   </script>
 </body>
 </html>
+>>>>>>> 1a172e6 (updated README.md with new information about the project and its features.)
