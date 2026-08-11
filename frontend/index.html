@@ -6,15 +6,15 @@
   <title>Teamboard Demo</title>
   <style>
     :root {
-      --bg: #08111f;
-      --panel: rgba(15, 26, 45, 0.88);
-      --panel-strong: #12223b;
-      --text: #e7eefc;
-      --muted: #91a4c7;
-      --accent: #7ee0c3;
-      --accent-strong: #4cc9f0;
-      --border: rgba(158, 180, 220, 0.2);
-      --shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+      --bg: #f3f5f8;
+      --panel: rgba(255, 255, 255, 0.92);
+      --panel-strong: #eef2f7;
+      --text: #102840;
+      --muted: #5b6b83;
+      --accent: #2f7fa6;
+      --accent-strong: #4ea8d8;
+      --border: rgba(60, 95, 125, 0.15);
+      --shadow: 0 24px 80px rgba(20, 42, 73, 0.12);
     }
 
     * { box-sizing: border-box; }
@@ -24,10 +24,11 @@
       min-height: 100vh;
       font-family: Arial, Helvetica, sans-serif;
       color: var(--text);
-      background:
-        radial-gradient(circle at top left, rgba(76, 201, 240, 0.18), transparent 35%),
-        radial-gradient(circle at top right, rgba(126, 224, 195, 0.16), transparent 30%),
-        linear-gradient(160deg, #06101d 0%, #0b172a 45%, #091320 100%);
+      background-color: var(--bg);
+      background-image:
+        radial-gradient(circle at top left, rgba(78, 145, 200, 0.14), transparent 35%),
+        radial-gradient(circle at top right, rgba(78, 145, 200, 0.08), transparent 30%),
+        linear-gradient(160deg, #f8fafc 0%, #eef3f8 45%, #dfe7f0 100%);
     }
 
     .shell {
@@ -150,8 +151,8 @@
     li {
       padding: 16px;
       border-radius: 16px;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(158, 180, 220, 0.14);
+      background: rgba(255, 255, 255, 0.88);
+      border: 1px solid rgba(60, 95, 125, 0.12);
     }
 
     .task-top {
@@ -196,11 +197,11 @@
       padding: 12px 18px;
       font: inherit;
       font-weight: 700;
-      color: #07111f;
+      color: #ffffff;
       background: linear-gradient(135deg, var(--accent), var(--accent-strong));
       cursor: pointer;
       transition: transform 160ms ease, box-shadow 160ms ease;
-      box-shadow: 0 12px 28px rgba(76, 201, 240, 0.22);
+      box-shadow: 0 12px 28px rgba(78, 145, 200, 0.18);
     }
 
     button:hover { transform: translateY(-1px); }
@@ -209,8 +210,8 @@
       min-height: 108px;
       padding: 14px 16px;
       border-radius: 16px;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(158, 180, 220, 0.14);
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid rgba(60, 95, 125, 0.12);
       color: var(--text);
       line-height: 1.6;
     }
