@@ -23,7 +23,3 @@ Teamboard is a small demo project that shows a simple collaboration dashboard:
 - Shows a dashboard summary with a task list.
 - Lets you post a quick team update.
 - Returns a demo AI suggestion based on your message.
-
-## Repository Note
-
-This repository was connected to GitHub as `Demo_Project` for version control and branching.
